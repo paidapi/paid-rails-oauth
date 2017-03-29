@@ -1,6 +1,6 @@
 # Paid Rails OAuth Sample
 
-This repository provides sample for Rails application that authenticates against Paid OAuth2 provider.
+This repository provides a sample Rails application that authenticates against Paid OAuth2 provider.  It allows an existing Paid user to connect their account and see a list of their invoices in the app.
 
 ## OAuth App
 Create your own Paid Application in [developer portal](https://developer.paidlabs.com). Use App ID and Secret to setup Environment variables.
@@ -22,6 +22,8 @@ PAID_API_URL: # defaults to https://api.paidlabs.com
 
 ## Database
 Application uses Postgresql. You can find more details in `config/database.yml`
+
+Run `rake db:setup`
 
 ## Development
 Run `bundle exec rails s`
