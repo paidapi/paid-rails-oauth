@@ -1,0 +1,15 @@
+<%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+<table>
+  <tr>
+    <th>#</th>
+    <th>Amount</th>
+    <th>Url</th>
+  </tr>
+  <% @invoices.each do |invoice| %>
+    <tr>
+      <td><%= invoice.fetch('number') %></td>
+      <td><%= invoice.fetch('amount_string') %></td>
+      <td><%= invoice.fetch('url') %></td>
+    </tr>
+  <% end %>
+</table>
