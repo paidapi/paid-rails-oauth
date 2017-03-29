@@ -41,7 +41,7 @@ class User < ApplicationRecord
     @client ||= OAuth2::Client.new(
       Rails.application.secrets.paid_app_id,
       Rails.application.secrets.paid_secret,
-      site: 'https://api.paidlabs.com'
+      site: ENV['PAID_API_URL'] || 'https://api.paidlabs.com'
     )
   end
 

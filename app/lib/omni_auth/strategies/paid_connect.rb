@@ -5,7 +5,8 @@ module OmniAuth
     class PaidConnect < OmniAuth::Strategies::OAuth2
       option :name, :paid_connect
 
-      option :client_options, site: 'https://auth.paidlabs.com'
+      option :client_options,
+             site: ENV['PAID_OAUTH_URL'] || 'https://auth.paidlabs.com'
 
       option :provider_ignores_state, true
 
@@ -32,7 +33,11 @@ module OmniAuth
       end
 
       def account
-        @account ||= deep_symbolize(access_token.get('https://api.paidlabs.com/v0/account').parsed)
+        @account ||= deep_symbolize(access_token.get(account_url).parsed)
+      end
+
+      def account_url
+        "#{ENV['PAID_API_URL'] || 'https://api.paidlabs.com'}/v0/account"
       end
     end
   end
